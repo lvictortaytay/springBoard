@@ -1,0 +1,82 @@
+h1{
+    margin-top: 40px;
+    text-align: center;
+    color: white;
+    font-weight:900;
+    font-family: monospace;
+    text-shadow: white 1px 1px 9px;
+}
+
+body{
+    background-color: rgb(14, 13, 13);
+}
+
+#searchForm{
+    margin-top: 5%;
+    margin-left: 35%;
+}
+
+#removeBtn{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgb(255, 75, 30);
+    border-radius: 15px;
+    color: white;
+    border: solid black;
+    padding:10px 15px;
+}
+#removeBtn:hover{
+    transition: .4s;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgb(255, 0, 0);
+    border-radius: 15px;
+    color: black;
+    border: solid red;
+    padding:12px 17px;
+    box-shadow: red 0px 1px 12px;
+}
+#searchBtn{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: white;
+    border-radius: 15px;
+    border: solid black;
+    padding:10px 15px;
+}
+#searchBtn:hover{
+    transition: .4s;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgb(12, 236, 12);
+    border-radius: 15px;
+    border: solid rgb(12, 236, 12);
+    color:white;
+    padding:12px 17px;
+    box-shadow: rgb(12, 236, 12) 0px 1px 12px;
+}
+#searchBar{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 15px;
+    border: solid black;
+    padding:10px 15px;
+
+}
+#searchBar:hover{
+    transition: .4s;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-radius: 15px;
+    border: solid black;
+    padding:12px 17px;
+
+}
+
+#picture{
+    border-radius: 15px;
+    border: 10px solid black;
+}
+#pictureBox{
+   display: inline-block;
+}
