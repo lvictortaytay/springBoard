@@ -1,0 +1,47 @@
+h1{
+    color: green
+    
+}
+
+
+.headerCell{
+    background-color: rgb(162, 210, 255);
+    border: solid white;
+    color:white;
+    padding: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 1.5vh;
+}
+.headerCell:hover{
+    background-color: rgb(110, 185, 255);
+    border: solid white;
+
+}
+
+
+
+.selection{
+    background-color:   #cedffd;
+    border:solid white;
+    padding: 30px;
+   
+}
+.selection:hover{
+    background-color:   #e9f1ff;
+    border:solid white;
+}
+
+.trd{
+    color: black;
+    font-size: small;
+    font-size: 1.4vh;
+}
+.trd2{
+    color: black;
+    font-size: 1vh;
+    
+}
+.transition{
+    transition: .2s;
+}
