@@ -1,75 +1,81 @@
-# Put your app in here.
-from flask import Flask , request
-from operations import add,sub,mult,div
+from flask import Flask
+from flask.templating import render_template
+from random import choice
+
+
 
 app = Flask(__name__)
 
-@app.route("/welcome")
-def welcome_page():
-    """creating a route that returns welcome on this page"""
-    return f"{1 + 1}"
+verbs = ["copy" ,"watch" , "cook" , "draw"]
+plural_n = ["dragons" , "humans" , "fishes" , "cats"]
+
+"""Madlibs Stories."""
 
 
+class Story:
+    """Madlibs story.
 
-@app.route("/welcome/home")
-def home_page():
-    """creating a route that returns welcome home on this page
-    >>> home_page()
-    welcome home
-    
-    
+    To  make a story, pass a list of prompts, and the text
+    of the template.
+
+        >>> s = Story(["noun", "verb"], "I love to {verb} a good {noun}.")
+
+    To generate text from a story, pass in a dictionary-like thing
+    of {prompt: answer, promp:answer):
+
+        >>> ans = {"verb": "eat", "noun": "mango"}
+        >>> s.generate(ans)
+        'I love to eat a good mango.'
     """
-    return "welcome home"
+
+    def __init__(self, words, text):
+        """Create story with words and template text."""
+
+        self.prompts = words
+        self.template = text
+
+    def generate(self, answers):
+        """Substitute answers into text."""
+
+        text = self.template
+
+        for (key, val) in answers.items():
+            text = text.replace("{" + key + "}", val)
+
+        return text
+
+
+# Here's a story to get you started
+
+
+story = Story(
+    ["place", "noun", "verb", "adjective", "plural_noun"],
+    """Once upon a time in a long-ago {place}, there lived a
+       large {adjective} {noun}. It loved to {verb} {plural_noun}."""
+)
 
 
 
-@app.route("/welcome/back")
-def back_page():
-    """creating a route that returns welcome on this page"""
-    return "welcome back"
+story1 = {"place":"disney-workd", "adjective":"yellow","noun":"boy", "verb":"teach" , "plural_noun":"kids"}
 
 
 
-#calc , build a simple calculator with flask that uses URL query parameter to get the numbers 
-# to calculate with
-@app.route("/addi")
-def addi():
-    a = int(request.args.get("a"))
-    b = int(request.args.get("b"))
-    return f"calculation {a} + {b} = {add(a,b)}"
-
-@app.route("/subi")
-def subi():
-    a = int(request.args.get("a"))
-    b = int(request.args.get("b"))
-    return f"calculation {a} - {b} = {sub(a,b)}"
-
-@app.route("/multi")
-def multi():
-    a = int(request.args.get("a"))
-    b = int(request.args.get("b"))
-    return f"calculation {a} x {b} = {mult(a,b)}"
-
-@app.route("/divi")
-def divi():
-    a = int(request.args.get("a"))
-    b = int(request.args.get("b"))
-    return f"calculation {a} ÷ {b} = {div(a,b)}"
+@app.route("/home")
+def home_page():
+    return render_template("base.html")
 
 
-#combine these all in one function and try not to use a lot of if/else statements
-data_base = {
-    "route":"math",
-    "add":add,
-    "sub":sub,
-    "mult":mult,
-    "div":div
-}
-@app.route('/<route>/<function>')
-def dynamic_calc(route,function):
-    a = int(request.args.get("a"))
-    b = int(request.args.get("b"))
-    if route == "math":
-        return f"calculation {a} {function} {b} = {data_base[function](a,b)}"
+
+@app.route("/story")
+def story_page():
+    return render_template("story.html")
+
+
+
+@app.route("/madlibs")
+def madlib_page():
+    verb = choice(verbs)
+    plural_noun = choice(plural_n)
+    return render_template("madlibs.html",verb=verb,plural_noun=plural_noun)
 
 
